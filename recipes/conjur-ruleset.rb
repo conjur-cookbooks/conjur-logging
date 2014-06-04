@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: conjur-logging
-# Recipe:: default
+# Recipe:: conjur-ruleset
 #
 # Copyright (C) 2014 Conjur Inc.
 #
@@ -21,4 +21,16 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-include_recipe 'conjur-logging::conjur-ruleset'
+include_recipe 'conjur-logging::rsyslogd'
+
+cookbook_file "rsyslog-ruleset.conf" do
+  path "/etc/rsyslog.d/12-conjur.conf"
+  mode 0644
+  notifies :restart, "service[rsyslog]"
+end
+
+cookbook_file "conjur-sign-log.rb" do
+  path "/opt/conjur/bin/conjur-sign-log"
+  mode 0755
+  notifies :restart, "service[rsyslog]"
+end
