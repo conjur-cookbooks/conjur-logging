@@ -4,8 +4,7 @@ require 'json'
 require 'openssl'
 require 'base64'
 
-# TODO! example PEN, replace with our own when we get it
-PRIVATE_ENTERPRISE_NUMBER = 32473
+PRIVATE_ENTERPRISE_NUMBER = 43868
 
 USER = 'foo'
 KEY = 'bar'
