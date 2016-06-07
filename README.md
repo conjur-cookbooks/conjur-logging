@@ -1,5 +1,9 @@
 # conjur-logging-cookbook
 
+This cookbook is DEPRECATED.
+
+Use https://github.com/conjur-cookbooks/conjur instead.
+
 Log shipping on Conjur-managed hosts.
 
 ## Supported Platforms
